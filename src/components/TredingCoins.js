@@ -25,8 +25,8 @@ const TredingCoins = () => {
       {dataTreding && dataTreding?.coins.length > 0 ?
       <div className="row" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
         {dataTreding?.coins?.map((data, index) => (
-          <div className="card m-2" style={{ width: '10rem', backgroundColor: '#111b21' }}>
-            
+          <div className="card m-2" style={{ width: '8rem', backgroundColor: '#111b21' }} key={data?.item.name} >
+
               <div class="text-center p-1">
                 <div className="card-body">
                 <img className="img-fluid" src={`${data?.item.large}`}

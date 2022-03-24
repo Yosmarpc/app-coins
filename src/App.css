@@ -1,11 +1,11 @@
-
+/** @format */
 
 .body-container {
   background-color: #1d282e;
+  height: 100%;
   color: #fff;
   justify-self: unset;
-  padding: 2.5em
-
+  padding: 2.5em;
 }
 img {
   width: 2rem;
@@ -17,7 +17,7 @@ img {
 }
 
 .color-celda {
-  color: #fff
+  color: #fff;
 }
 
 .color-celda:hover {
@@ -29,13 +29,12 @@ img {
 
 .card {
   color: #fff;
-  background-color: #111b21!important;
+  background-color: #111b21 !important;
   cursor: pointer;
-  width: 14rem!important;
-
+  width: 14rem !important;
 }
 .card:hover {
-  background-color: #384852!important;
+  background-color: #384852 !important;
   border: 1px solid #fff;
   color: #fff;
   font-weight: bold;
@@ -67,12 +66,4 @@ img {
   font-weight: 700;
   width: auto;
   height: 50px;
-
 }
-
-
-
-
-
-
-

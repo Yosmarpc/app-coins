@@ -33,20 +33,21 @@ const ModalDetalle = ({ OpenModal, handleOpenModal, dataModal }) => {
                 />{" "}
                 {dataModal.name} (
                 <b className="text-uppercase">{dataModal.symbol}</b>)
-                <Button
-                  className="btn btn-dark d-flex float-end"
-                  onClick={handleOpenModal}
-                >
-                  Close
-                </Button>
+
               </div>
             </Modal.Title>
           </Modal.Header>
           <Modal.Body style={{ backgroundColor: "#111b21", color: "#fff" }}>
+
             <div
               className="table-responsive sticky-top"
               style={{ maxHeight: "600px" }}
             >
+               <Button
+                  className="btn btn-dark  float-end"
+                  onClick={handleOpenModal}>
+                  Close
+          </Button>
               <table
                 className="table text-white"
                 style={{ backgroundColor: "#111b21" }}
