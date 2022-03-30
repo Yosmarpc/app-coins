@@ -5,6 +5,7 @@ import "./App.css";
 import ModalDetalle from "./components/ModalDetalle";
 import moment from "moment";
 import { Spinner } from "react-bootstrap";
+import Grafico from "./components/Grafico";
 
 function App() {
   const [dataCoins, setDataCoins] = useState(null);
@@ -23,7 +24,7 @@ function App() {
   const getDatosApiMarket = () => {
     /* console.log("pasa a ejecutar la api"); */
 
-    fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=100&page=1&sparkline=false
+    fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=24h
     `)
       .then((response) => response.json())
       .then((data) => {
@@ -111,10 +112,20 @@ function App() {
                     )}
                     <td>
                       <img src={d.image} alt={d.name} className="m-2" />{" "}
-                      {d.name} <b className="text-uppercase">{d.symbol}</b>{" "}
+                      {d.name}{" "}
+                      {!isMobile ? (
+                        <b className="text-uppercase">{d.symbol}</b>
+                      ) : (
+                        ""
+                      )}{" "}
                     </td>
                     <td className="text-end fw-bold p-4">
-                      {d.current_price.toLocaleString()}
+                      <button
+                        type="button"
+                        className="btn btn-success btn-sm fw-bold"
+                      >
+                        $ {d.current_price.toLocaleString()}
+                      </button>
                     </td>
                     {!isMobile ? (
                       <>
@@ -169,7 +180,6 @@ function App() {
       </div>
     </>
   );
-
   return (
     <div className="body-container">
       <ModalDetalle
@@ -182,7 +192,7 @@ function App() {
         <>
           <div className="my-1">
             <b
-              className="text-center fw-500 btn btn-success float-end"
+              className="text-center text-xs-center fw-500 btn btn-success float-lg-end float-xs-start"
               style={{ fontSize: 11 }}
             >
               update Date:{" "}
@@ -299,10 +309,10 @@ function App() {
                         <b className="text-center text-uppercase fw-bold">
                           {data.name}
                           <div className="my-3 text-center">
-                            <span className="text-center">
+                            <span className="btn btn-success btn-sm text-center fw-bold">
                               PRICE: ${data.current_price.toLocaleString()}
                             </span>
-                            {/*  <b className="float-end text-success">$ {data.high_24h.toLocaleString()}</b> */}
+                            {/* <Grafico dataModal={data} /> */}
                           </div>
                         </b>
                       </div>

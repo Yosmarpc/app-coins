@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
+import Grafico from "./Grafico";
 const ModalDetalle = ({ OpenModal, handleOpenModal, dataModal }) => {
   /* console.log(dataModal); */
   return (
@@ -33,21 +34,20 @@ const ModalDetalle = ({ OpenModal, handleOpenModal, dataModal }) => {
                 />{" "}
                 {dataModal.name} (
                 <b className="text-uppercase">{dataModal.symbol}</b>)
-
               </div>
             </Modal.Title>
           </Modal.Header>
           <Modal.Body style={{ backgroundColor: "#111b21", color: "#fff" }}>
-
             <div
               className="table-responsive sticky-top"
               style={{ maxHeight: "600px" }}
             >
-               <Button
-                  className="btn btn-dark  float-end"
-                  onClick={handleOpenModal}>
-                  Close
-          </Button>
+              <Button
+                className="btn btn-dark  float-end"
+                onClick={handleOpenModal}
+              >
+                Close
+              </Button>
               <table
                 className="table text-white"
                 style={{ backgroundColor: "#111b21" }}
@@ -64,58 +64,74 @@ const ModalDetalle = ({ OpenModal, handleOpenModal, dataModal }) => {
                       RANKING: <br /> {dataModal.market_cap_rank}
                     </td>
                     <td className="text-end fw-bold p-4">
-                      $ {dataModal.current_price.toLocaleString("es")} {dataModal.market_cap_change_percentage_24h.toLocaleString()}%
+                      $ {dataModal.current_price.toLocaleString("es")}{" "}
+                      {dataModal.market_cap_change_percentage_24h.toLocaleString()}
+                      %
                     </td>
                   </tr>
                   <tr>
                     <td className="text-end fw-bold p-4">HIGH/LOW 24h</td>
                     <td className="text-end  fw-bold p-4">
-                    <div className="text-success">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-arrow-up-short"
-                        viewBox="0 0 16 16"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"
-                        />
-                      </svg>{" "}
-                      $ {dataModal.high_24h != null ? dataModal.high_24h.toLocaleString("es") : 0}
-                    </div>
-                    <div className="text-danger">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-arrow-down-short"
-                        viewBox="0 0 16 16"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"
-                        />
-                      </svg>{" "}
-                      $ {dataModal.low_24h != null ? dataModal.low_24h.toLocaleString("es") : 0}
-                    </div>
+                      <div className="text-success">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          className="bi bi-arrow-up-short"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"
+                          />
+                        </svg>{" "}
+                        ${" "}
+                        {dataModal.high_24h != null
+                          ? dataModal.high_24h.toLocaleString("es")
+                          : 0}
+                      </div>
+                      <div className="text-danger">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          className="bi bi-arrow-down-short"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"
+                          />
+                        </svg>{" "}
+                        ${" "}
+                        {dataModal.low_24h != null
+                          ? dataModal.low_24h.toLocaleString("es")
+                          : 0}
+                      </div>
                     </td>
                   </tr>
                   <tr>
-                  <th className="text-end fw-bold p-4 text-uppercase">PRICE CHANGE 24H</th>
+                    <th className="text-end fw-bold p-4 text-uppercase">
+                      PRICE CHANGE 24H
+                    </th>
                     <td className="text-end text-danger fw-bold p-4">
-                    $ {dataModal.price_change_24h != null ? dataModal.price_change_24h.toLocaleString("es") : 0}
+                      ${" "}
+                      {dataModal.price_change_24h != null
+                        ? dataModal.price_change_24h.toLocaleString("es")
+                        : 0}
                     </td>
                   </tr>
- <tr>
+                  <tr>
                     <td className="text-start fw-bold p-4 bg-dark">
                       TOTAL VOLUMEN{" "}
                     </td>
                     <td className="text-end fw-bold p-4">
-                      $ {dataModal.total_volume != null ? dataModal.total_volume.toLocaleString("es") : 0 }
+                      ${" "}
+                      {dataModal.total_volume != null
+                        ? dataModal.total_volume.toLocaleString("es")
+                        : 0}
                     </td>
                   </tr>
                   <tr>
@@ -123,7 +139,10 @@ const ModalDetalle = ({ OpenModal, handleOpenModal, dataModal }) => {
                       MARKET CAP{" "}
                     </td>
                     <td className="text-end fw-bold p-4">
-                      $ { dataModal.market_cap != null ?  dataModal.market_cap.toLocaleString("es") : 0}
+                      ${" "}
+                      {dataModal.market_cap != null
+                        ? dataModal.market_cap.toLocaleString("es")
+                        : 0}
                     </td>
                   </tr>
                   <tr>
@@ -131,7 +150,10 @@ const ModalDetalle = ({ OpenModal, handleOpenModal, dataModal }) => {
                       MARKET CAP CHANGE 24H
                     </td>
                     <td className="text-end fw-bold p-4">
-                      $ {dataModal.market_cap_change_24h != null ? dataModal.market_cap_change_24h.toLocaleString("es") : 0}
+                      ${" "}
+                      {dataModal.market_cap_change_24h != null
+                        ? dataModal.market_cap_change_24h.toLocaleString("es")
+                        : 0}
                     </td>
                   </tr>
                   <tr>
@@ -147,30 +169,42 @@ const ModalDetalle = ({ OpenModal, handleOpenModal, dataModal }) => {
                   </tr>
                   <tr>
                     <td className="text-start fw-bold p-4 bg-dark">
-                     MAX SUPPLY
+                      MAX SUPPLY
                     </td>
                     <td className="text-end fw-bold p-4">
-                      $ {dataModal.max_supply != null ? dataModal.max_supply.toLocaleString("es") : 0}
+                      ${" "}
+                      {dataModal.max_supply != null
+                        ? dataModal.max_supply.toLocaleString("es")
+                        : 0}
                     </td>
                   </tr>
                   <tr>
                     <td className="text-start fw-bold p-4 bg-dark">
-                     TOTAL SUPPLY
+                      TOTAL SUPPLY
                     </td>
                     <td className="text-end fw-bold p-4">
-                      $ { dataModal.total_supply != null ? dataModal.total_supply.toLocaleString("es") : 0}
+                      ${" "}
+                      {dataModal.total_supply != null
+                        ? dataModal.total_supply.toLocaleString("es")
+                        : 0}
                     </td>
                   </tr>
                   <tr>
                     <td className="text-start fw-bold p-4 bg-dark">
-                     CIRCULATING SUPPLY
+                      CIRCULATING SUPPLY
                     </td>
                     <td className="text-end fw-bold p-4">
-                      $ {dataModal.circulating_supply != null ? dataModal.circulating_supply.toLocaleString("es") : 0}
+                      ${" "}
+                      {dataModal.circulating_supply != null
+                        ? dataModal.circulating_supply.toLocaleString("es")
+                        : 0}
                     </td>
                   </tr>
                 </tbody>
               </table>
+              <div>
+                <Grafico dataModal={dataModal} />
+              </div>
             </div>
           </Modal.Body>
           <Modal.Footer
